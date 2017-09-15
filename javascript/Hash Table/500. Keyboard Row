@@ -1,1 +1,58 @@
+Given a List of words, return the words that can be typed using letters of alphabet on only one row's of American keyboard like the image below.
 
+Example 1:
+Input: ["Hello", "Alaska", "Dad", "Peace"]
+Output: ["Alaska", "Dad"]
+Note:
+You may use one character in the keyboard more than once.
+You may assume the input string will only contain letters of alphabet.
+/**
+ * @param {string[]} words
+ * @return {string[]}
+ */
+var findWords = function(words) {
+    var array1 = ['q','w','e','r','t','y','u','i','o','p'];
+    var array2 = ['a','s','d','f','g','h','j','k','l'];
+    var array3 = ['z','x','c','v','b','n','m'];
+    var result = [];
+    var n = words.length;
+    for(let i = 0; i < n; i++){
+        if(array1.indexOf(words[i][0].toLowerCase())>-1){
+            let x = 0;
+            for(let j = 1; j < words[i].length; j++){
+                if(array1.indexOf(words[i][j].toLowerCase())>-1){
+                    x++;
+                }
+            } 
+            if(x == words[i].length-1){
+                result.push(words[i]);
+            }
+        }
+        else if(array2.indexOf(words[i][0].toLowerCase())>-1){
+            let x = 0;
+            for(let j = 1; j < words[i].length; j++){
+                if(array2.indexOf(words[i][j].toLowerCase())>-1){
+                    x++;
+                }
+            }
+            if(x == words[i].length-1){
+                result.push(words[i]);
+            }
+        }
+        else if(array3.indexOf(words[i][0].toLowerCase())>-1){
+            let x = 0;
+            for(let j = 1; j < words[i].length; j++){
+                if(array3.indexOf(words[i][j].toLowerCase())>-1){
+                    x++;
+                }
+            }
+            if(x == words[i].length-1){
+                result.push(words[i]);
+            }
+        }
+        else{
+            continue;
+        }
+    }
+    return result;
+};
