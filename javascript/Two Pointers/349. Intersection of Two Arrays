@@ -13,6 +13,16 @@ The result can be in any order.
  * @return {number[]}
  */
 var intersection = function(nums1, nums2) {
+    var set = new Set(nums1);
+    return [...new Set(nums2.filter(x => set.has(x)))]
+};
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var intersection = function(nums1, nums2) {
     var result = [];
     var transition = [];
     if(nums1.length>0 && nums2.length>0){
