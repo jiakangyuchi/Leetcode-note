@@ -54,3 +54,5 @@ var maxCount = function(m, n, ops) {
         return m*n;
     }
 };
+
+不用考虑m和n，取最小的a和最小的b相乘就是结果。
