@@ -1,0 +1,12 @@
+先序遍历：根、左、右
+中序遍历：左、根、右
+后序遍历：左、右、根
+广度优先
+深度优先
+度（Degree）叶子（Leaf 没有Child）兄弟（Sibling）
+二叉树（Binary）
+满二叉树（满了。。）
+完全二叉树（满二叉树从右往左按顺序去掉leaf）
+非完全二叉树（满二叉树没按顺序去掉leaf）
+二叉排序树（Binary Search Tree）左节点值小于parent node，右节点值大于parent node.
+递归（recursive）
