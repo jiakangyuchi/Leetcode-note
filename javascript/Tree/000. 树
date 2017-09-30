@@ -5,8 +5,10 @@
 深度优先
 度（Degree）叶子（Leaf 没有Child）兄弟（Sibling）
 二叉树（Binary）
-满二叉树（满了。。）
-完全二叉树（满二叉树从右往左按顺序去掉leaf）
-非完全二叉树（满二叉树没按顺序去掉leaf）
-二叉排序树（Binary Search Tree）左节点值小于parent node，右节点值大于parent node.
+满二叉树：左右都满了。。
+完全二叉树：满二叉树从右往左按顺序去掉leaf
+非完全二叉树：满二叉树没按顺序去掉leaf
+二叉排序树（Binary Search Tree）：左节点值小于parent node，右节点值大于parent node.时间复杂度O(log2n)，深度越平衡时间复杂度越小，最坏情况O(n)
+最优二叉树(哈夫曼树Huffman Tree)：带权路径最短
+平衡二叉树（Self-balancing binary search tree）AVL，
 递归（recursive）
