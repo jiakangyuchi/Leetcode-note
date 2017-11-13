@@ -28,12 +28,8 @@ Output:
 Explanation:
 There is no way to reshape a 2 * 2 matrix to a 2 * 4 matrix. So output the original matrix.
 
-/**
- * @param {number[][]} nums
- * @param {number} r
- * @param {number} c
- * @return {number[][]}
- */
+Version1 
+
 var matrixReshape = function(nums, r, c) {
     var string_nums = nums.toString().split(',');
     var new_nums = string_nums.map(function(x){
@@ -47,6 +43,25 @@ var matrixReshape = function(nums, r, c) {
         for(let i = 0; i<new_nums.length; i+=c){
             result.push(new_nums.slice(i, i+c));
         }  
+        return result;
+    }
+};
+________________________________________________________________________________________________________________________________________
+Version2
+
+var matrixReshape = function(nums, r, c) {
+    var string_nums = nums.join(',');
+    var array_nums = string_nums.split(',');
+    var nums_length = array_nums.length;
+    var result = [];
+    if(nums_length === 0 || nums_length != r * c){
+        return nums;
+    }
+    else{
+        array_nums = array_nums.map(Number);
+        for(let i = 0; i + c <= nums_length; i += c){
+            result.push(array_nums.slice(i, i + c));
+        }   
         return result;
     }
 };
