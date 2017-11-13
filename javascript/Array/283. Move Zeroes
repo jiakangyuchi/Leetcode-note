@@ -6,16 +6,11 @@ Note:
 You must do this in-place without making a copy of the array.
 Minimize the total number of operations.
 
-/**
- * @param {number[]} nums
- * @return {void} Do not return anything, modify nums in-place instead.
- */
 var moveZeroes = function(nums) {
-    var n = nums.length;
-    for(let i = n-1; i>=0; i--){
-        if(nums[i]==0){
-            nums.splice(i, 1);
+    for(let i = nums.length; i >= 0; i--){
+        if(nums[i] === 0){
+            nums.splice(i,1);    
             nums.push(0);
-        }    
-    }
-};
+        }
+    }    
+};//倒着来可以防止splice元素之后编号发生变化
