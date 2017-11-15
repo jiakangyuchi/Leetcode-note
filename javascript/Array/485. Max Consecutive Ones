@@ -18,6 +18,6 @@ var findMaxConsecutiveOnes = function(nums) {
     var string_nums = nums.join("").split('0').map(function(x){
         return x.length;
     })
-    return Math.max.(...string_nums);
+    return Math.max(...string_nums);
     //return Math.max.apply(null, string_nums);
 };
