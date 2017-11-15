@@ -1,0 +1,28 @@
+Given an integer array, find three numbers whose product is maximum and output the maximum product.
+
+Example 1:
+Input: [1,2,3]
+Output: 6
+Example 2:
+Input: [1,2,3,4]
+Output: 24
+Note:
+The length of the given array will be in range [3,104] and all elements are in the range [-1000, 1000].
+Multiplication of any three numbers in the input won't exceed the range of 32-bit signed integer.
+
+
+//两种方案，最小选两个最大选一个，或者最大选三个，这样可以避开考虑各种复杂的正负组合可能性。
+var maximumProduct = function(nums) {
+    nums.sort(function(x, y){
+        if(x < y){
+            return -1;
+        }
+        if(x > y){
+            return 1;
+        }
+        return 0;
+    });
+    var plan_a = nums[0] * nums[1] * nums[nums.length - 1];
+    var plan_b = nums[nums.length - 3] * nums[nums.length - 2] * nums[nums.length - 1];
+    return Math.max(plan_a, plan_b);
+};
