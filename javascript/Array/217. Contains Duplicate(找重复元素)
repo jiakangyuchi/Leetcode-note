@@ -1,0 +1,14 @@
+Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.
+
+
+//注意数组是个对象，可以设置array[-1] = 1；循环一次就可以，不需要两次遍历。
+var containsDuplicate = function(nums) {
+    var array = [];
+    for(let i = 0; i < nums.length; i++){
+        array[nums[i]] = array[nums[i]] + 1 || 1;
+        if(array[nums[i]] > 1){
+            return true;
+        }
+    }
+    return false;
+};
