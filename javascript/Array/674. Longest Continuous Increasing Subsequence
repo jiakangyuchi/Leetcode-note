@@ -1,0 +1,52 @@
+Given an unsorted array of integers, find the length of longest continuous increasing subsequence.
+
+Example 1:
+Input: [1,3,5,4,7]
+Output: 3
+Explanation: The longest continuous increasing subsequence is [1,3,5], its length is 3. 
+Even though [1,3,5,7] is also an increasing subsequence, it's not a continuous one where 5 and 7 are separated by 4. 
+Example 2:
+Input: [2,2,2,2,2]
+Output: 1
+Explanation: The longest continuous increasing subsequence is [2], its length is 1. 
+Note: Length of the array will not exceed 10,000.
+
+
+Version1
+
+//只要在增加，就count++，遇到下降再归1，把结果放在新数组里，然后取最大值。
+var findLengthOfLCIS = function(nums) {
+    var count = 1;
+    var array = [1];
+    for(let i = 1; i < nums.length; i++){
+        if(nums[i] > nums[i - 1]){
+            count++;
+        }
+        else if(i === nums.length - 1){
+            array.push(count);
+        }
+        else{
+            array.push(count);
+            count = 1;
+        }
+        array.push(count);
+    }
+    return nums.length === 0 ? 0 : Math.max(...array);
+};
+
+________________________________________________________________________________________________________________________________________
+Version2
+
+//可以边count++边比较最大值，这样不需要新设立数组（额外空间复杂度），即比较即废弃小的值。
+
+var findLengthOfLCIS = function(nums) {
+    var count = 0;
+    var result = 0;
+    for(let i = 0; i < nums.length; i++){
+        result = Math.max(result, ++count);
+        if(nums[i + 1] <= nums[i]){
+            count = 0;
+        }
+    }
+    return result;
+};
