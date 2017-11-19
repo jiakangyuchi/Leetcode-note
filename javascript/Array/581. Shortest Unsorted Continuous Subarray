@@ -1,0 +1,14 @@
+var findUnsortedSubarray = function(nums) {
+    var sorted = new Array(...nums).sort((x, y) => (x - y))
+    var start = 0;
+    var end = nums.length - 1;
+    while(sorted[start] === nums[start] && start < nums.length){
+        start++;
+    }
+    if(start === nums.length) return 0;
+    while(sorted[end] === nums[end] && end > start){
+        end--;
+    }
+    if(end === start) return 0;
+    return end - start + 1;
+};
