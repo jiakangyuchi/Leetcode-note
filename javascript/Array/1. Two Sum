@@ -52,3 +52,17 @@ var twoSum = function(nums, target) {
         }
     }
 };//顺序查找，时间复杂度O(n^2)
+
+
+
+________________________________________________________________________________________________________________________________________
+Version 3
+function twoSum(nums, target) {
+    var map = new Map();
+    for(var i = 0; i < nums.length; i++){
+        if(map.get(target - nums[i]) !== undefined){
+            return [map.get(target - nums[i]), i];
+        }
+        map.set(nums[i], i);   
+    }
+}//散列表hashmap，时间复杂度O(n),用空间换时间
