@@ -1,0 +1,22 @@
+Given an index k, return the kth row of the Pascal's triangle.
+
+For example, given k = 3,
+Return [1,3,3,1].
+
+Note:
+Could you optimize your algorithm to use only O(k) extra space?
+
+
+//要求空间复杂度O(k)，所以只能在当前数组上自我修改，每修改一个元素将会影响到下一个元素的计算，所以开始的时候在头部添加一个1
+var getRow = function(rowIndex) {
+    var result = [1];
+    for(var i = 0; i < rowIndex; i++){
+        result.unshift(1);
+        for(var j = 0; j <= i; j++){
+            result[j] = (result[j + 1]||0) + (result[j + 2]||0);
+        }
+        result.pop();
+        result.unshift(1);
+    }
+    return result;
+};
