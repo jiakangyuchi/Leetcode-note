@@ -9,7 +9,7 @@ Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 
 
-
+Version 1
 //先排序，然后双指针两头逼近，时间复杂度O(n^2)，较为复杂，如果数组本来就是有序的话，双指针会很好用。
 var twoSum = function(nums, target) {
     var ori = new Array(...nums);
@@ -39,3 +39,16 @@ var twoSum = function(nums, target) {
     }
     return left > right ? [right, left] : [left, right];
 };
+
+
+________________________________________________________________________________________________________________________________________
+Version 2
+var twoSum = function(nums, target) {
+    for(var i = 0; i < nums.length - 1; i++){
+        for(var j = i + 1; j < nums.length; j++){
+            if(nums[i] + nums[j] === target){
+                return [i, j];
+            }
+        }
+    }
+};//顺序查找，时间复杂度O(n^2)
