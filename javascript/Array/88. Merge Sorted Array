@@ -1,0 +1,31 @@
+Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
+
+Note:
+You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. 
+The number of elements initialized in nums1 and nums2 are m and n respectively.
+默认升序排列，只保留nums1中0~m范围内的元素。
+
+
+Version 1
+var merge = function(nums1, m, nums2, n) {
+    nums1.splice(m, nums1.length);
+    for(var i = 0; i < n; i++){
+        nums1.push(nums2[i]);
+    }
+    nums1.sort((x, y) => (x - y));
+};//因为使用了sort冒泡排序，所以时间复杂度为O(n^2)，这是最直接的方法，但不是最好的方法。
+
+
+
+_________________________________________________________________________________________________________________________________________
+Version 2
+var merge = function(nums1, m, nums2, n) {
+    while(n > 0){
+        if(nums1[m - 1] > nums2[n - 1]){
+            nums1[m + n - 1] = nums1[--m];
+        }
+        else{
+            nums1[m + n - 1] = nums2[--n];
+        }
+    }
+};//循环一次，双指针，时间复杂度O(n)
