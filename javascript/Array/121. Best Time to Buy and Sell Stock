@@ -25,4 +25,4 @@ var maxProfit = function(prices) {
         profit = Math.max(profit, prices[i] - buy);
     }
     return profit;
-};//每遇到更小的价格就把其设为新的购买价格，收益不断和新的比较，保留最大值。时间复杂度O(n)
+};//动态规划（Dynamic Programming），每遇到更小的价格就把其设为新的购买价格，收益不断和新的比较，保留最大值。时间复杂度O(n)
