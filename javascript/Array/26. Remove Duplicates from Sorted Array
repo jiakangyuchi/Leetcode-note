@@ -1,0 +1,17 @@
+Given a sorted array, remove the duplicates in-place such that each element appear only once and return the new array.
+
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+
+Example:
+
+Given nums = [1,1,2],
+
+Your function should return [1, 2], with the first two elements of nums being 1 and 2 respectively.
+
+var removeDuplicates = function(nums) {
+    for(var i = nums.length - 1; i >= 0; i--){
+        if(nums[i] === nums[i - 1]){
+            nums.splice(i, 1);
+        }
+    }
+};//老方法，倒着来
