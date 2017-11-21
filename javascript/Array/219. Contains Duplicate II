@@ -16,3 +16,4 @@ var containsNearbyDuplicate = function(nums, k) {
     }
     return false;
 };//hashmap，时间复杂度O(n)，记得当找到两个相同的元素时，如果距离大于k，要更新该元素在map中的value。
+  //这道题最直接的方法是顺序查找，两个循环，时间复杂度O(n^2)。
