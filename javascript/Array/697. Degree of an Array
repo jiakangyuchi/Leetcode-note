@@ -45,4 +45,4 @@ var findShortestSubArray = function(nums) {
         }
     }
     return Math.min(...array2);
-};//多个hashmap，时间复杂度O(n)，但是整体方法太复杂
+};//多个hashmap，时间复杂度O(n)，但是整体方法太复杂，可以考虑用动态规划做
