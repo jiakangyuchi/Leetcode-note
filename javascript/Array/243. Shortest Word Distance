@@ -1,0 +1,34 @@
+Given a list of words and two words word1 and word2, return the shortest distance between these two words in the list.
+
+For example,
+Assume that words = ["practice", "makes", "perfect", "coding", "makes"].
+
+Given word1 = “coding”, word2 = “practice”, return 3.
+Given word1 = "makes", word2 = "coding", return 1.
+
+Note:
+You may assume that word1 does not equal to word2, and word1 and word2 are both in the list.
+
+
+
+var shortestDistance = function(words, word1, word2) {
+    var map = {};
+    var distance = Math.abs(words.indexOf(word1) - words.indexOf(word2));
+    for(var i = 0; i < words.length; i++){
+        if(words[i] === word1 && map.word2 === undefined){
+            map.word1 = i;  
+        }
+        else if(words[i] === word2 && map.word1 === undefined){
+            map.word2 = i;   
+        }
+        else if(words[i] === word1 && map.word2 !== undefined){
+            distance = Math.min(distance, i - map.word2);
+            map.word1 = i;
+        }
+        else if(words[i] === word2 && map.word1 !== undefined){
+            distance = Math.min(distance, i - map.word1);
+            map.word2 = i;
+        }
+    }
+    return distance;
+};//散列表（hashmap）+ 动态规划（DP），遍历数组，每遇到word1或者word2就重新比较最大距离，并改变word1和word2在hashmap中的值,时间复杂度O(n)
