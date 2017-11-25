@@ -21,4 +21,4 @@ var findMaxAverage = function(nums, k) {
         amount = Math.max(current, amount);
     }
     return amount/k;
-};//动态规划，遍历数组，每移动一次就重新比较一次最大值。
+};//滑动窗口算法(Sliding Window)，遍历数组，每移动一次就重新比较一次最大值。
