@@ -1,0 +1,29 @@
+Given m arrays, and each array is sorted in ascending order. Now you can pick up two integers from two different arrays (each array picks one) and calculate the distance. We define the distance between two integers a and b to be their absolute difference |a-b|. Your task is to find the maximum distance.
+
+Example 1:
+Input: 
+[[1,2,3],
+ [4,5],
+ [1,2,3]]
+Output: 4
+Explanation: 
+One way to reach the maximum distance 4 is to pick 1 in the first or third array and pick 5 in the second array.
+Note:
+Each given array will have at least 1 number. There will be at least two non-empty arrays.
+The total number of the integers in all the m arrays will be in the range of [2, 10000].
+The integers in the m arrays will be in the range of [-10000, 10000].
+
+
+
+
+var maxDistance = function(arrays) {
+    var result = 0;
+    var min = arrays[0][0];
+    var max = arrays[0][arrays[0].length - 1];
+    for(var i = 1; i < arrays.length; i++){
+        result = Math.max(result, Math.abs(arrays[i][arrays[i].length - 1] - min), Math.abs(arrays[i][0] - max));
+        max = Math.max(max, arrays[i][arrays[i].length - 1]);
+        min = Math.min(min, arrays[i][0]);
+    }
+    return result;
+};//动态规划(Dynamic Programming)，存储目前所得到的最大值和最小值并不断比较更新，和下一组的最大最小值进行比较。
