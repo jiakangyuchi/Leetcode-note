@@ -15,13 +15,17 @@ Given the above grid, return 6. Note the answer is not 11, because the island mu
 Example 2:
 [[0,0,0,0,0,0,0,0]]
 Given the above grid, return 0.
+Note: The length of each dimension in the given grid does not exceed 50.
+
+
+
 
 var maxAreaOfIsland = function(grid) {
     var h = grid.length;
     var w = grid[0].length;
     var result = 0;
     function dfs(i, j){
-        if(0 <= i < h && 0 <= j < w){
+        if(i >= 0 && i < h && j >= 0 && j< w){
             if(grid[i][j] === 1){
                 grid[i][j] = 0;
                 return 1 + dfs(i - 1, j) + dfs(i, j + 1) + dfs(i + 1, j) + dfs(i, j - 1);
@@ -35,4 +39,4 @@ var maxAreaOfIsland = function(grid) {
         }
     }
     return result;
-};
+};//DFS深度优先搜索，每一个点会延伸出4个点，是1则返回1加上其周围点的返回值，不断递归，是0则返回0
