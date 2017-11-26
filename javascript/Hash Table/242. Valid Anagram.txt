@@ -1,0 +1,32 @@
+Given two strings s and t, write a function to determine if t is an anagram of s.
+
+For example,
+s = "anagram", t = "nagaram", return true.
+s = "rat", t = "car", return false.
+
+Note:
+You may assume the string contains only lowercase alphabets.
+
+Follow up:
+What if the inputs contain unicode characters? How would you adapt your solution to such case?
+
+
+
+
+var isAnagram = function(s, t) {
+    if(s.length === t.length){
+        var map_s = {};
+        var map_t = {};
+        for(let i = 0; i < s.length; i++){
+            map_s[s[i]] = (map_s[s[i]]||0) + 1;
+            map_t[t[i]] = (map_t[t[i]]||0) + 1;
+        }
+        for(let i = 0; i < s.length; i++){
+            if(map_s[s[i]] !== map_t[s[i]]){
+                return false;
+            }
+        }
+        return true;
+    }
+    return false;
+};//hashmap存储每个字母出现的次数，比较两个hashmap，时间复杂度O(n)
