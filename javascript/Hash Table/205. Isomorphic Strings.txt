@@ -1,0 +1,32 @@
+Given two strings s and t, determine if they are isomorphic.
+
+Two strings are isomorphic if the characters in s can be replaced to get t.
+
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.
+
+For example,
+Given "egg", "add", return true.
+
+Given "foo", "bar", return false.
+
+Given "paper", "title", return true.
+
+Note:
+You may assume both s and t have the same length.
+
+
+
+var isIsomorphic = function(s, t) {
+    var map = {};
+    var map2 = {};
+    for(var i = 0; i < s.length; i++){
+        if(map[s[i]] === undefined){
+            if(map2[t[i]] !== undefined) return false;
+            map[s[i]] = t[i];
+            map2[t[i]] = s[i];
+        }
+        else if(map[s[i]] === t[i]) continue;
+        else return false
+    }
+    return true;
+};//两个字母不能用同一个字母替换，所以"ab"->"aa" === false，一个字母要用同一个字母替代。所以使用两个hashmap
