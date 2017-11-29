@@ -24,4 +24,4 @@ var canPermutePalindrome = function(s) {
     }
     if(result <= 1) return true;
     else return false;
-};//hashmap O(n)
+};//hashmap O(n)，数字出现偶数个的不会影响对称，奇数个的最多有一个(放在中间)
