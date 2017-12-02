@@ -1,0 +1,39 @@
+Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters.
+
+This is case sensitive, for example "Aa" is not considered a palindrome here.
+
+Note:
+Assume the length of given string will not exceed 1,010.
+
+Example:
+
+Input:
+"abccccdd"
+
+Output:
+7
+
+Explanation:
+One longest palindrome that can be built is "dccaccd", whose length is 7.
+
+
+
+
+var longestPalindrome = function(s) {
+    var map = {};
+    var result = 0;
+    for(let i = 0; i < s.length; i++){
+        if(map[s[i]] === undefined){
+            map[s[i]] = 1;
+        }
+        else if(map[s[i]] === 1){
+            map[s[i]] = undefined;
+            result += 2;
+        }
+    }
+    if(s.length > result){
+        result += 1;
+    }
+    return result;
+};//想法是偶数字母都可以留下，最后再加一个字母放在中间。每出现两个相同字母就加2，同时hashmap中该字母的value归于undefined，
+最后如果字符串比结果长，则结果加一。时间复杂度O(n)
