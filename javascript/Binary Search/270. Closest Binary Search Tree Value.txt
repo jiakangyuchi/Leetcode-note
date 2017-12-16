@@ -1,0 +1,27 @@
+Given a non-empty binary search tree and a target value, find the value in the BST that is closest to the target.
+
+Note:
+Given target value is a floating point.
+You are guaranteed to have only one unique value in the BST that is closest to the target.
+
+
+
+var closestValue = function(root, target) {
+    var map = {};
+    var current = Math.abs(root.val - target);
+    var match = function(a, current){
+        var dist = Math.abs(a.val - target);
+        map[dist] = a.val;
+        current = Math.min(current, dist);
+        if(a.val === target) return a.val;
+        else if(target < a.val){
+            if(a.left !== null) return match(a.left, current);
+            else return map[current];
+        }
+        else if(target > a.val){
+            if(a.right !== null) return match(a.right, current);
+            else return map[current];
+        }
+    }
+    return match(root, current);
+};
