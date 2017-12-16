@@ -1,0 +1,20 @@
+A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).
+
+Write a function to determine if a number is strobogrammatic. The number is represented as a string.
+
+For example, the numbers "69", "88", and "818" are all strobogrammatic.
+
+
+
+var isStrobogrammatic = function(num) {
+    var rev = "";
+    for(let i = num.length - 1; i >= 0; i--){
+        if(num[i] === "6") rev += "9";
+        if(num[i] === "9") rev += "6";
+        if(num[i] === "1") rev += "1";
+        if(num[i] === "8") rev += "8";
+        if(num[i] === "0") rev += "0";
+    }
+    if(rev === num) return true;
+    else return false;
+};//hashmap，时间复杂度O(n)
