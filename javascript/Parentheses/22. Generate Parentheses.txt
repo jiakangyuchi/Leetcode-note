@@ -1,0 +1,29 @@
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+
+For example, given n = 3, a solution set is:
+
+[
+  "((()))",
+  "(()())",
+  "(())()",
+  "()(())",
+  "()()()"
+]
+
+
+
+var generateParenthesis = function(n) {
+    var result = [];
+    function create(str, a, b){
+        if( a === 0 ){
+            result.push(str + ")".repeat(b));
+            return;
+        }
+        if( a > 0 ){
+            create( str + "(", a - 1, b );
+        }
+        if( a < b ) create( str + ")", a , b - 1 );
+    }
+    create( "", n, n )
+    return result;
+};//递归，可以加左括号，若右括号小于左括号，就也可以加右括号
