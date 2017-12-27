@@ -17,7 +17,7 @@ var minDepth = function(root) {
     }
     minHeight(root, 1);
     return result;
-};
+};//DFS
 
 ___________________________________________________________________________________________________________________________________________
  Version2
@@ -27,4 +27,4 @@ ________________________________________________________________________________
     if(!root.left) return 1 + minDepth(root.right);
     if(!root.right) return 1 + minDepth(root.left);
     return Math.min(1 + minDepth(root.left), 1 + minDepth(root.right));
-};
+};//BFS
