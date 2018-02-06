@@ -11,32 +11,25 @@ return [0, 1].
 
 Version 1
 var twoSum = function(nums, target) {
-    var ori = new Array(...nums);
-    nums.sort((x, y) => (x - y));
-    var left = 0;
-    var right = nums.length - 1;
-    while(left < right){
-        if(nums[left] + nums[right] > target){
-            right -= 1;
+    var ori = Array.from(nums);
+    nums.sort((x, y) => x - y);
+    var i = 0; 
+    var j = nums.length - 1;
+    while(j > i){
+        let sum = nums[i] + nums[j];
+        if(sum > target){
+            j --;
+            continue;
         }
-        else if(nums[left] + nums[right] < target){
-            left += 1;
+        else if(sum < target){
+            i ++;
+            continue;
         }
-        else{
-            left = nums[left];
-            right = nums[right];
-            break;
-        }
+        break;
     }
-    if(left === right){
-        left = ori.indexOf(left);
-        right = ori.lastIndexOf(right);
-    }
-    else{
-        left = ori.indexOf(left);
-        right = ori.indexOf(right);    
-    }
-    return left > right ? [right, left] : [left, right];
+    var left = ori.indexOf(nums[i]);
+    var right = ori.lastIndexOf(nums[j]);
+    return [left, right];
 };//先排序，然后双指针两头逼近，时间复杂度O(n^2)，较为复杂，如果数组本来就是有序的话，双指针会很好用。
 
 
