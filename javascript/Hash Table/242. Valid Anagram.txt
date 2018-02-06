@@ -12,6 +12,7 @@ What if the inputs contain unicode characters? How would you adapt your solution
 
 
 
+Version1
 
 var isAnagram = function(s, t) {
     if(s.length === t.length){
@@ -30,3 +31,24 @@ var isAnagram = function(s, t) {
     }
     return false;
 };//hashmap存储每个字母出现的次数，比较两个hashmap，时间复杂度O(n)
+
+________________________________________________________________________________________________________________________________________
+
+Version2
+
+var isAnagram = function(s, t) {
+    var map = {};
+    for(let i = 0; i < s.length; i ++){
+        let v = s[i];
+        map[v] = (map[v] || 0) + 1;
+    }
+    for(let i = 0; i < t.length; i ++){
+        let v = t[i];
+        if(map[v] === undefined || map[v] === 0) return false;
+        map[v] --;
+    }
+    for(var m in map){
+        if(map[m] !== 0) return false;
+    }
+    return true;
+};//只用一个map，减少空间复杂度，最后看每个值是不是为0；
