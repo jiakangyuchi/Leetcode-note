@@ -20,16 +20,15 @@ For the purpose of this problem, assume that your function returns 0 when the re
 Version 1
 
 var reverse = function(x) {
-    if(x === 0) return 0;
     var y = Math.abs(x);
     if(y.toString(2).length > 31) return 0;
-    y = y.toString().split("").reverse();
-    while(y[0] === 0){
-        y.splice(0,1);
+    var arr = y.toString().split("").reverse();
+    while(arr[0] === 0){
+        arr.shift(0);
     }
-    y = Number(y.join(""))
-    if(y.toString(2).length > 31) return 0;
-    return x > 0 ? y : 0 - y;
+    var result = Number(arr.join(""));
+    if(result.toString(2).length > 31) return 0;
+    return x > 0 ? result : 0 - result;
 };//数组reverse()
 __________________________________________________________________________________________________________________________________________
 
