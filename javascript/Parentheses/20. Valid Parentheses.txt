@@ -22,12 +22,12 @@ ________________________________________________________________________________
 Version 2
 
 var isValid = function(s) {
-    var map = {
+    let map = {
         '(': ')',
         '[': ']',
         '{': '}'
     };
-    var arr = [];
+    let arr = [];
     for(let i = 0; i < s.length; i ++){
         if(i === 0){
             if(!map[s[0]]) return false; 
@@ -38,8 +38,8 @@ var isValid = function(s) {
             arr.pop();
             continue;   
         }
-        else if(!map[s[i]]) return false;
-        else arr.push(s[i]);
+        if(!map[s[i]]) return false;
+        arr.push(s[i]);
     }
     return arr.length === 0;
 };//使用map，减少runtime
