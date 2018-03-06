@@ -3,7 +3,7 @@ Given a string containing just the characters '(', ')', '{', '}', '[' and ']', d
 The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
 
 
-
+Version 1
 var isValid = function(s) {
     var array = [];
     s = s.split( "" );
@@ -16,3 +16,30 @@ var isValid = function(s) {
     }
     return array.length === 0;
 };//栈，先进后出
+
+__________________________________________________________________________________________________________________________________________
+
+Version 2
+
+var isValid = function(s) {
+    var map = {
+        '(': ')',
+        '[': ']',
+        '{': '}'
+    };
+    var arr = [];
+    for(let i = 0; i < s.length; i ++){
+        if(i === 0){
+            if(!map[s[0]]) return false; 
+            arr.push(s[0]);
+            continue;
+        }
+        if(map[arr[arr.length - 1]] === s[i]){
+            arr.pop();
+            continue;   
+        }
+        else if(!map[s[i]]) return false;
+        else arr.push(s[i]);
+    }
+    return arr.length === 0;
+};//使用map，减少runtime
